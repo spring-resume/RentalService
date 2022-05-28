@@ -1,0 +1,5 @@
+server:
+  port: 8081
+movie:
+  service:
+    path: http://localhost:8080
