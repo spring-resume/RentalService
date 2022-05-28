@@ -20,14 +20,16 @@ public class RentalService {
         return restTemplate.getForObject(url, Movie.class);
     }
 
-    public void rentMovie(Long id) {
+    public Movie rentMovie(Long id) {
         String url=movieServicePath+"/rent/"+id;
         restTemplate.put(url,null);
+        return findMovie(id);
     }
 
-    public void returnMovie(Long id) {
+    public Movie returnMovie(Long id) {
         String url=movieServicePath+"/return/"+id;
         restTemplate.put(url,null);
+        return findMovie(id);
     }
 
     public Movie createMovie(Movie movie) {
