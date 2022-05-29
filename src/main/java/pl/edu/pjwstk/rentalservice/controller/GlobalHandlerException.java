@@ -5,6 +5,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.net.ConnectException;
 
@@ -26,7 +27,7 @@ public class GlobalHandlerException {
         return ResponseEntity.status(504).body("Brak połączenia z MovieService ");
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(HttpServerErrorException.InternalServerError.class)
     public ResponseEntity<String> handleInternalErrorServerException() {
         return ResponseEntity.status(502).body("internal error server");
     }

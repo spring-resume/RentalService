@@ -15,7 +15,7 @@ public class RentalController {
         this.rentalService = rentalService;
     }
 
-    @ApiOperation(value = "Find movie by provided id")
+    @ApiOperation(value = "Find movie from MovieService by provided id")
     @GetMapping("/get-movie/{id}")
     public ResponseEntity<Movie> getMovie(@ApiParam(value = "unique id of movie") @PathVariable Long id) {
         return ResponseEntity.ok(rentalService.findMovie(id));
@@ -35,7 +35,7 @@ public class RentalController {
 
     @ApiOperation(value = "Add movie", notes = "provide movie by json")
     @PostMapping("/add-movie")
-    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
+    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
         return ResponseEntity.ok(rentalService.createMovie(movie));
     }
 
